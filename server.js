@@ -39,23 +39,21 @@ app.post('/api/v1/rhapsody/auth', function(req, res) {
     }, function(err, response, body) {
       if (err) {
         res.status(500);
-        res.write(JSON.stringify({
+        res.json({
           error: err,
           status: 500,
           msg: 'Error connecting to rhapsody auth service'
-        }));
+        });
       } else {
-        res.write(body);
+        res.json(JSON.parse(body));
       }
-      res.send();
     });
   } else {
     res.status(400);
-    res.write(JSON.stringify({
+    res.json({
       status: 400,
       msg: 'Bad Request: valid code required'
-    }));
-    res.send();
+    });
   }
 });
 
