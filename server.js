@@ -25,7 +25,6 @@ var client_secret = process.env.SECRET_KEY;
 
 // Routes
 app.post('/api/v1/rhapsody/auth', function(req, res) {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
   var code = req.body.code;
   if (code) {
     request.post({
