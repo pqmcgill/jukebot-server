@@ -46,6 +46,11 @@ app.post('/api/v1/rhapsody/auth', function(req, res) {
           msg: 'Error connecting to rhapsody auth service'
         }));
       } else {
+        var headers = {};
+        headers['Access-Control-Allow-Origin'] = 'http://jukebothero.com';
+        headers['Access-Control-Allow-Methods'] = 'GET,POST,OPTIONS,PUT,PATCH,DELETE';
+        headers['Access-Control-Allow-Headers'] = 'X-Requested-With,Content-Type';
+        res.writeHead(200, headers);
         res.write(body);
       }
       res.send();
