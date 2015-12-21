@@ -13,8 +13,7 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -46,11 +45,6 @@ app.post('/api/v1/rhapsody/auth', function(req, res) {
           msg: 'Error connecting to rhapsody auth service'
         }));
       } else {
-        var headers = {};
-        headers['Access-Control-Allow-Origin'] = '*';
-        headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
-        headers['Access-Control-Allow-Headers'] = 'X-Requested-With, Content-Type';
-        res.writeHead(200, headers);
         res.write(body);
       }
       res.send();
