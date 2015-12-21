@@ -23,6 +23,7 @@ var client_secret = process.env.SECRET_KEY;
 app.post('/api/v1/rhapsody/auth', function(req, res) {
   var code = req.body.code;
   if (code) {
+    console.log('CODE HERE:', code);
     request.post({
       url: 'https://api.rhapsody.com/oauth/access_token',
       form: {
@@ -42,7 +43,7 @@ app.post('/api/v1/rhapsody/auth', function(req, res) {
           msg: 'Error connecting to rhapsody auth service'
         });
       } else {
-        res.json(JSON.parse(body));
+        res.json(body);
       }
     });
   } else {
