@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var queryString = require('querystring');
 var request = require('request');
+var cors = require('cors');
 
 // Server Configuration
 var app = express();
@@ -11,16 +12,7 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-
-  if ('OPTIONS' === req.method) {
-    res.send(200);
-  } else {
-    next();
-  }
-});
+app.use(cors());
 
 var port = process.env.PORT || 3000;
 
