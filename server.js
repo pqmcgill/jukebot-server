@@ -31,7 +31,7 @@ app.post('/api/v1/rhapsody/auth', function(req, res) {
          'client_secret': client_secret,
          'response_type': 'code',
          'code': code,
-         'redirect_uri': 'http://google.com',
+         'redirect_uri': 'localhost:8080',
          'grant_type': 'authorization_code'
        }
      }, function(err, response, body) {
